@@ -74,7 +74,7 @@ module.exports = function(config) {
         thresholdReporter: {
             statements: 80,
             branches: 50,
-            functions: 80,
+            functions: 70,
             lines: 80
         },
         // web server port
