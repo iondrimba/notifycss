@@ -13,6 +13,5 @@ before_install:
 before_script:
 - npm install -g gulp
 script:
-- gulp deploy
 - npm test
 - gulp coveralls

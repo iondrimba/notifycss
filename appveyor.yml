@@ -14,7 +14,6 @@ install:
   - npm install
   - npm install promise
 test_script:
-  - gulp deploy
   - npm test
 build: off
 matrix:
