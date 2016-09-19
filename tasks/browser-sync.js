@@ -1,14 +1,17 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync')
-	.create();
+.create();
 
 module.exports = function () {
 	browserSync.init({
-		server: "./demo"
+		server: {
+			baseDir: "./",
+			index: "index.html"
+		}
 	});
 
 	gulp.watch("./demo/demo.css")
-		.on('change', browserSync.reload);
+	.on('change', browserSync.reload);
 	gulp.watch("./demo/demo.js")
-		.on('change', browserSync.reload);
+	.on('change', browserSync.reload);
 };

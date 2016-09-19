@@ -1,6 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _notifyMe = require('./notify-me');
 
 var _notifyMe2 = _interopRequireDefault(_notifyMe);
@@ -9,48 +11,91 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Demo = function Demo() {
-	_classCallCheck(this, Demo);
+var Demo = function () {
+	function Demo() {
+		_classCallCheck(this, Demo);
+	}
 
-	console.log('Demo');
-	var notifyMe = new _notifyMe2.default();
+	_createClass(Demo, [{
+		key: 'setup',
+		value: function setup() {
+			var _this = this;
 
-	//CSS TRANSITION
+			this.notifyMe = new _notifyMe2.default();
 
-	var transitionElm = document.getElementsByClassName('transition-demo')[0];
-	var btnTransitionIn = document.getElementsByClassName('btn-transition')[0];
-	var btnTransitionOut = document.getElementsByClassName('btn-transition-remove')[0];
+			//CSS TRANSITION
 
-	notifyMe.notifyTransitionEnd(transitionElm, function () {
-		console.log('transitionElm End');
-	});
+			this.transitionElm = document.getElementsByClassName('transition-demo')[0];
+			this.btnTransitionIn = document.getElementsByClassName('btn-transition')[0];
+			this.btnTransitionOut = document.getElementsByClassName('btn-transition-remove')[0];
 
-	btnTransitionIn.onclick = function () {
-		transitionElm.classList.add('transition-in');
-	};
+			this.notifyMe.transitionEnd(this.transitionElm, function () {
+				_this.transitionComplete();
+			});
 
-	btnTransitionOut.onclick = function () {
-		transitionElm.classList.remove('transition-in');
-	};
+			this.btnTransitionIn.onclick = function () {
+				_this.addTransition();
+			};
 
-	//CSS ANIMATION
+			this.btnTransitionOut.onclick = function () {
+				_this.removeTransition();
+			};
 
-	var animationElm = document.getElementsByClassName('animation-demo')[0];
-	var btnAnimationIn = document.getElementsByClassName('btn-animation')[0];
-	var btnAnimationOut = document.getElementsByClassName('btn-animation-remove')[0];
+			//CSS ANIMATION
 
-	notifyMe.notifyAnimationEnd(animationElm, function () {
-		console.log('animationElm End');
-	});
+			this.animationElm = document.getElementsByClassName('animation-demo')[0];
+			this.btnAnimationIn = document.getElementsByClassName('btn-animation')[0];
+			this.btnAnimationOut = document.getElementsByClassName('btn-animation-remove')[0];
 
-	btnAnimationIn.onclick = function () {
-		console.log('click', btnAnimationIn);
-		animationElm.classList.add('animation-in');
-	};
-	btnAnimationOut.onclick = function () {
-		animationElm.classList.remove('animation-in');
-	};
-};
+			this.notifyMe.animationEnd(this.animationElm, function (e) {
+				_this.animationComplete();
+			}, 'animationShow');
+
+			this.btnAnimationIn.onclick = function () {
+				_this.addAnimation();
+			};
+			this.btnAnimationOut.onclick = function () {
+				_this.removeAnimation();
+			};
+		}
+	}, {
+		key: 'transitionComplete',
+		value: function transitionComplete() {
+			this.transitionElm.classList.add('end');
+		}
+	}, {
+		key: 'addTransition',
+		value: function addTransition() {
+			this.transitionElm.classList.remove('end');
+			this.transitionElm.classList.add('transition-in');
+		}
+	}, {
+		key: 'removeTransition',
+		value: function removeTransition() {
+			this.transitionElm.classList.remove('end');
+			this.transitionElm.classList.remove('transition-in');
+		}
+	}, {
+		key: 'animationComplete',
+		value: function animationComplete() {
+			this.animationElm.classList.add('end');
+		}
+	}, {
+		key: 'addAnimation',
+		value: function addAnimation() {
+			this.animationElm.classList.remove('end');
+			this.animationElm.classList.add('animation-in');
+		}
+	}, {
+		key: 'removeAnimation',
+		value: function removeAnimation() {
+			this.animationElm.classList.remove('end');
+			this.animationElm.classList.remove('animation-in');
+		}
+	}]);
+
+	return Demo;
+}();
 
 window.demo = new Demo();
 
@@ -58,7 +103,7 @@ window.demo = new Demo();
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -66,26 +111,44 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var NotifyMe = function () {
-    function NotifyMe() {
-        _classCallCheck(this, NotifyMe);
+	function NotifyMe() {
+		_classCallCheck(this, NotifyMe);
+	}
 
-        console.log('NotifyMe');
-    }
+	_createClass(NotifyMe, [{
+		key: 'transitionEnd',
+		value: function transitionEnd(elm, func) {
+			elm.addEventListener('transitionend', func, false);
+		}
+	}, {
+		key: '_privateCall',
+		value: function _privateCall(e, func, name) {
+			if (name.length) {
+				if (e.animationName === name) {
+					func(e);
+				}
+			} else {
+				func(e);
+			}
+		}
+	}, {
+		key: 'animationEnd',
+		value: function animationEnd(elm, func) {
+			var _this = this;
 
-    _createClass(NotifyMe, [{
-        key: 'notifyTransitionEnd',
-        value: function notifyTransitionEnd(elm, func) {
-            elm.addEventListener('transitionend', func, false);
-        }
-    }, {
-        key: 'notifyAnimationEnd',
-        value: function notifyAnimationEnd(elm, func) {
-            elm.addEventListener('webkitAnimationEnd', func, false);
-            elm.addEventListener('animationend', func, false);
-        }
-    }]);
+			var name = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
 
-    return NotifyMe;
+			elm.addEventListener('webkitAnimationEnd', function (e) {
+				_this._privateCall(e, func, name);
+			}, false);
+
+			elm.addEventListener('animationend', function (e) {
+				_this._privateCall(e, func, name);
+			}, false);
+		}
+	}]);
+
+	return NotifyMe;
 }();
 
 exports.default = NotifyMe;

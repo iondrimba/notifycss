@@ -1,18 +1,29 @@
 'use strict';
 
 class NotifyMe {
-    constructor() {
-        console.log('NotifyMe');
-    }
-
-    notifyTransitionEnd(elm, func) {
+	constructor() {
+	}
+	transitionEnd(elm, func) {
 		elm.addEventListener('transitionend', func, false);
-    }
+	}
+	_privateCall(e, func, name) {
+		if(name.length) {
+			if(e.animationName===name) {
+				func(e);
+			}
+		}else {
+			func(e);
+		}
+	}
+	animationEnd(elm, func, name='') {
+		elm.addEventListener('webkitAnimationEnd', (e)=>{
+			this._privateCall(e, func, name);
+		}, false);
 
-    notifyAnimationEnd(elm, func) {
-		elm.addEventListener('webkitAnimationEnd', func, false);
-		elm.addEventListener('animationend', func, false);
-    }
+		elm.addEventListener('animationend', (e)=>{
+			this._privateCall(e, func, name);
+		}, false);
+	}
 }
 
 export default NotifyMe;

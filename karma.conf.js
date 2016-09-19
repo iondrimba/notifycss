@@ -5,17 +5,19 @@ var threshold = require('karma-threshold-reporter');
 
 module.exports = function(config) {
     config.set({
-
+        browsers: ['Chrome'],
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: '',
 
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['browserify', 'jasmine'],
+        frameworks: ['jasmine', 'fixture','browserify'],
         // list of files / patterns to load in the browser
         files: [
-            'src/scripts/app.js',
+            'src/demo.js',
+            'demo/demo.css',
+            '*.html',
             'spec/*.js'
         ],
         included: false,
@@ -41,8 +43,9 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'src/scripts/app.js': ['babel', 'browserify'],
-            'spec/*.js': ['babel', 'browserify']
+            'spec/*.js': ['babel', 'browserify'],
+            'src/demo.js': ['babel', 'browserify'],
+            '*.html': ['html2js']
         },
         coverageReporter: {
             instrumenters: { isparta: require('isparta') },
@@ -55,7 +58,7 @@ module.exports = function(config) {
             istanbul: { noCompact: true },
             dir: 'test/reports/coverage',
             reporters: [
-                // reporters not supporting the `file` property 
+                // reporters not supporting the `file` property
                 {
                     type: 'lcovonly',
                     subdir: 'report-lcov'
@@ -75,7 +78,7 @@ module.exports = function(config) {
             lines: 90
         },
         // web server port
-        port: 9876,
+        port: 3000,
 
 
         // enable / disable colors in the output (reporters and logs)

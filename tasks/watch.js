@@ -4,5 +4,5 @@ var gulpsync = require('gulp-sync')(gulp);
 
 module.exports = function() {
     gulp.watch('./src/*.js', gulpsync.sync(['eslint', 'browserify']));
-    gulp.watch('./demo/*.css', gulpsync.sync(['post-css']));
+    gulp.watch('./src/*.css', gulpsync.sync(['copy', 'post-css']));
 };

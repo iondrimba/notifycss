@@ -3,46 +3,67 @@ import NotifyMe from './notify-me';
 
 class Demo {
 	constructor() {
-		console.log('Demo');
-		let notifyMe = new NotifyMe();
 
+	}
+	setup() {
+		this.notifyMe = new NotifyMe();
 
 		//CSS TRANSITION
 
-		let transitionElm = document.getElementsByClassName('transition-demo')[0];
-		let btnTransitionIn = document.getElementsByClassName('btn-transition')[0];
-		let btnTransitionOut = document.getElementsByClassName('btn-transition-remove')[0];
+		this.transitionElm = document.getElementsByClassName('transition-demo')[0];
+		this.btnTransitionIn = document.getElementsByClassName('btn-transition')[0];
+		this.btnTransitionOut = document.getElementsByClassName('btn-transition-remove')[0];
 
-		notifyMe.notifyTransitionEnd(transitionElm,()=>{
-			console.log('transitionElm End');
+		this.notifyMe.transitionEnd(this.transitionElm,()=>{
+			this.transitionComplete();
 		});
 
-		btnTransitionIn.onclick=()=>{
-			transitionElm.classList.add('transition-in');
+		this.btnTransitionIn.onclick=()=>{
+			this.addTransition();
 		};
 
-		btnTransitionOut.onclick=()=>{
-			transitionElm.classList.remove('transition-in');
+		this.btnTransitionOut.onclick=()=>{
+			this.removeTransition();
 		};
 
 		//CSS ANIMATION
 
-		let animationElm = document.getElementsByClassName('animation-demo')[0];
-		let btnAnimationIn = document.getElementsByClassName('btn-animation')[0];
-		let btnAnimationOut = document.getElementsByClassName('btn-animation-remove')[0];
+		this.animationElm = document.getElementsByClassName('animation-demo')[0];
+		this.btnAnimationIn = document.getElementsByClassName('btn-animation')[0];
+		this.btnAnimationOut = document.getElementsByClassName('btn-animation-remove')[0];
 
-		notifyMe.notifyAnimationEnd(animationElm,()=>{
-			console.log('animationElm End');
-		});
+		this.notifyMe.animationEnd(this.animationElm,(e)=>{
+			this.animationComplete();
+		}, 'animationShow');
 
-
-		btnAnimationIn.onclick=()=>{
-			console.log('click', btnAnimationIn);
-			animationElm.classList.add('animation-in');
+		this.btnAnimationIn.onclick=()=>{
+			this.addAnimation();
 		};
-		btnAnimationOut.onclick=()=>{
-			animationElm.classList.remove('animation-in');
+		this.btnAnimationOut.onclick=()=>{
+			this.removeAnimation();
 		};
+	}
+	transitionComplete(){
+		this.transitionElm.classList.add('end');
+	}
+	addTransition() {
+		this.transitionElm.classList.remove('end');
+		this.transitionElm.classList.add('transition-in');
+	}
+	removeTransition() {
+		this.transitionElm.classList.remove('end');
+		this.transitionElm.classList.remove('transition-in');
+	}
+	animationComplete(){
+		this.animationElm.classList.add('end');
+	}
+	addAnimation() {
+		this.animationElm.classList.remove('end');
+		this.animationElm.classList.add('animation-in');
+	}
+	removeAnimation() {
+		this.animationElm.classList.remove('end');
+		this.animationElm.classList.remove('animation-in');
 	}
 }
 
