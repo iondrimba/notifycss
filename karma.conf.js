@@ -75,7 +75,7 @@ module.exports = function(config) {
             statements: 80,
             branches: 50,
             functions: 85,
-            lines: 90
+            lines: 80
         },
         // web server port
         port: 3000,
