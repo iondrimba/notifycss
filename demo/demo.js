@@ -34,6 +34,7 @@ var Demo = function () {
 			});
 
 			this.btnTransitionIn.onclick = function () {
+				console.log('transition click', document.getElementsByClassName('transition-demo'));
 				_this.addTransition();
 			};
 
@@ -92,12 +93,23 @@ var Demo = function () {
 			this.animationElm.classList.remove('end');
 			this.animationElm.classList.remove('animation-in');
 		}
+	}, {
+		key: 'removeAnimationListener',
+		value: function removeAnimationListener() {
+			this.notifyMe.removeAnimationListener(this.animationElm);
+		}
+	}, {
+		key: 'removeTransitionListener',
+		value: function removeTransitionListener() {
+			this.notifyMe.removeTransitionListener(this.transitionElm);
+		}
 	}]);
 
 	return Demo;
 }();
 
 window.demo = new Demo();
+window.demo.setup();
 
 },{"./notify-me":2}],2:[function(require,module,exports){
 'use strict';
@@ -132,6 +144,11 @@ var NotifyMe = function () {
 			}
 		}
 	}, {
+		key: '_removeListener',
+		value: function _removeListener(elm, func) {
+			elm.removeEventListener(func);
+		}
+	}, {
 		key: 'animationEnd',
 		value: function animationEnd(elm, func) {
 			var _this = this;
@@ -145,6 +162,17 @@ var NotifyMe = function () {
 			elm.addEventListener('animationend', function (e) {
 				_this._privateCall(e, func, name);
 			}, false);
+		}
+	}, {
+		key: 'removeTransitionListener',
+		value: function removeTransitionListener(elm) {
+			this._removeListener(elm, 'transitionend');
+		}
+	}, {
+		key: 'removeAnimationListener',
+		value: function removeAnimationListener(elm) {
+			this._removeListener(elm, 'webkitAnimationEnd');
+			this._removeListener(elm, 'animationend');
 		}
 	}]);
 

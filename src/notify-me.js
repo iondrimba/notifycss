@@ -1,28 +1,37 @@
 'use strict';
 
 class NotifyMe {
-	constructor() {
-	}
+	constructor() {}
 	transitionEnd(elm, func) {
 		elm.addEventListener('transitionend', func, false);
 	}
 	_privateCall(e, func, name) {
-		if(name.length) {
-			if(e.animationName===name) {
+		if (name.length) {
+			if (e.animationName === name) {
 				func(e);
 			}
-		}else {
+		} else {
 			func(e);
 		}
 	}
-	animationEnd(elm, func, name='') {
-		elm.addEventListener('webkitAnimationEnd', (e)=>{
+	_removeListener(elm, func) {
+		elm.removeEventListener(func);
+	}
+	animationEnd(elm, func, name = '') {
+		elm.addEventListener('webkitAnimationEnd', (e) => {
 			this._privateCall(e, func, name);
 		}, false);
 
-		elm.addEventListener('animationend', (e)=>{
+		elm.addEventListener('animationend', (e) => {
 			this._privateCall(e, func, name);
 		}, false);
+	}
+	removeTransitionListener(elm) {
+		this._removeListener(elm, 'transitionend');
+	}
+	removeAnimationListener(elm) {
+		this._removeListener(elm, 'webkitAnimationEnd');
+		this._removeListener(elm, 'animationend');
 	}
 }
 

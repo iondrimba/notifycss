@@ -14,15 +14,16 @@ class Demo {
 		this.btnTransitionIn = document.getElementsByClassName('btn-transition')[0];
 		this.btnTransitionOut = document.getElementsByClassName('btn-transition-remove')[0];
 
-		this.notifyMe.transitionEnd(this.transitionElm,()=>{
+		this.notifyMe.transitionEnd(this.transitionElm, () => {
 			this.transitionComplete();
 		});
 
-		this.btnTransitionIn.onclick=()=>{
+		this.btnTransitionIn.onclick = () => {
+			console.log('transition click', document.getElementsByClassName('transition-demo'));
 			this.addTransition();
 		};
 
-		this.btnTransitionOut.onclick=()=>{
+		this.btnTransitionOut.onclick = () => {
 			this.removeTransition();
 		};
 
@@ -32,18 +33,18 @@ class Demo {
 		this.btnAnimationIn = document.getElementsByClassName('btn-animation')[0];
 		this.btnAnimationOut = document.getElementsByClassName('btn-animation-remove')[0];
 
-		this.notifyMe.animationEnd(this.animationElm,(e)=>{
+		this.notifyMe.animationEnd(this.animationElm, (e) => {
 			this.animationComplete();
 		}, 'animationShow');
 
-		this.btnAnimationIn.onclick=()=>{
+		this.btnAnimationIn.onclick = () => {
 			this.addAnimation();
 		};
-		this.btnAnimationOut.onclick=()=>{
+		this.btnAnimationOut.onclick = () => {
 			this.removeAnimation();
 		};
 	}
-	transitionComplete(){
+	transitionComplete() {
 		this.transitionElm.classList.add('end');
 	}
 	addTransition() {
@@ -54,7 +55,7 @@ class Demo {
 		this.transitionElm.classList.remove('end');
 		this.transitionElm.classList.remove('transition-in');
 	}
-	animationComplete(){
+	animationComplete() {
 		this.animationElm.classList.add('end');
 	}
 	addAnimation() {
@@ -65,6 +66,13 @@ class Demo {
 		this.animationElm.classList.remove('end');
 		this.animationElm.classList.remove('animation-in');
 	}
+	removeAnimationListener() {
+		this.notifyMe.removeAnimationListener(this.animationElm);
+	}
+	removeTransitionListener() {
+		this.notifyMe.removeTransitionListener(this.transitionElm);
+	}
+
 }
 
 window.demo = new Demo();
