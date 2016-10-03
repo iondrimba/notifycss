@@ -19,7 +19,6 @@ class Demo {
 		});
 
 		this.btnTransitionIn.onclick = () => {
-			console.log('transition click', document.getElementsByClassName('transition-demo'));
 			this.addTransition();
 		};
 

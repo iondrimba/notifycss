@@ -18,7 +18,7 @@ describe('demo', () => {
 			expect(demo.transitionComplete).toHaveBeenCalled();
 			clearTimeout(timeout);
 			done();
-		}, 2000);
+		}, 1000);
 	});
 
 	it('should call animationComplete', (done) => {

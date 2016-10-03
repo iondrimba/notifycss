@@ -12,7 +12,7 @@ module.exports = function(config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jasmine', 'fixture','browserify'],
+        frameworks: ['jasmine', 'fixture', 'browserify'],
         // list of files / patterns to load in the browser
         files: [
             'src/demo.js',
@@ -48,14 +48,22 @@ module.exports = function(config) {
             '*.html': ['html2js']
         },
         coverageReporter: {
-            instrumenters: { isparta: require('isparta') },
+            instrumenters: {
+                isparta: require('isparta')
+            },
             instrumenter: {
                 'spec/*.js': 'isparta'
             },
             instrumenterOptions: {
-                isparta: { babel: { presets: 'es2015' } }
+                isparta: {
+                    babel: {
+                        presets: 'es2015'
+                    }
+                }
             },
-            istanbul: { noCompact: true },
+            istanbul: {
+                noCompact: true
+            },
             dir: 'test/reports/coverage',
             reporters: [
                 // reporters not supporting the `file` property
