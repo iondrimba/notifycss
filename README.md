@@ -1,4 +1,4 @@
-# Notify Me ES6 (WIP)
+# Notify Me
 
 Notify CSS animation/transition events
 
