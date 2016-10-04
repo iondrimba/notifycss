@@ -16,7 +16,7 @@ module.exports = function(config) {
         files: [
             'src/demo.js',
             'demo/demo.css',
-            '*.html',
+            'spec/fixtures/index.html',
             'spec/*.js'
         ],
         included: false,
@@ -44,7 +44,7 @@ module.exports = function(config) {
         preprocessors: {
             'spec/*.js': ['babel', 'browserify'],
             'src/demo.js': ['babel', 'browserify'],
-            '*.html': ['html2js']
+            'spec/fixtures/index.html': ['html2js']
         },
         coverageReporter: {
             instrumenters: {

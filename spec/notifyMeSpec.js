@@ -1,9 +1,9 @@
 beforeEach(function() {
-	fixture.load('fixture.html');
+	fixture.load('index.html');
 	demo.setup();
 });
 
-describe('demo', () => {
+describe('NotifyMe', () => {
 	it('should be instatiated', () => {
 		expect(demo).not.toBeNull();
 	});
