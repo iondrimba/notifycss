@@ -12,18 +12,6 @@ describe('Demo', () => {
 		expect(demo.notifyCss).not.toBeNull();
 	});
 
-	it('should dispatch transition event', () => {
-		spyOn(demo, 'addTransition');
-		demo.btnTransitionIn.click();
-		expect(demo.addTransition).toHaveBeenCalled();
-	});
-
-	it('should dispatch animation event', () => {
-		spyOn(demo, 'addAnimation');
-		demo.btnAnimationIn.click();
-		expect(demo.addAnimation).toHaveBeenCalled();
-	});
-
 	it('should call transitionComplete', (done) => {
 		spyOn(demo, 'transitionComplete');
 		demo.addTransition();
@@ -43,7 +31,19 @@ describe('Demo', () => {
 			expect(demo.animationComplete).toHaveBeenCalled();
 			clearTimeout(timeout);
 			done();
-		}, 1000);
+		}, 2000);
+	});
+
+	it('should dispatch transition event', () => {
+		spyOn(demo, 'addTransition');
+		demo.btnTransitionIn.click();
+		expect(demo.addTransition).toHaveBeenCalled();
+	});
+
+	it('should dispatch animation event', () => {
+		spyOn(demo, 'addAnimation');
+		demo.btnAnimationIn.click();
+		expect(demo.addAnimation).toHaveBeenCalled();
 	});
 
 	it('should add end class on transitionComplete', () => {
@@ -81,4 +81,6 @@ describe('Demo', () => {
 			done();
 		}, 1000);
 	});
+
+
 });

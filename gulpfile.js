@@ -85,7 +85,7 @@ gulp.task('bump-major', gulpsync.sync(['major']), function renameMajor() {
 gulp.task('default', gulpsync.sync(['copy-css', 'eslint', 'browserify', 'browser-sync', 'watch']));
 
 //publish Task
-gulp.task('deploy', gulpsync.sync(['eslint', 'copy-notify']));
+gulp.task('deploy', gulpsync.sync(['post-css', 'eslint', 'copy-notify']));
 
 //publish Task
-gulp.task('transpiled', gulpsync.sync(['eslint', 'copy-notify', 'browserify-src']));
+gulp.task('transpiled', gulpsync.sync(['post-css', 'eslint', 'copy-notify', 'browserify-src']));

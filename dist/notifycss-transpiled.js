@@ -55,7 +55,7 @@ var NotifyCss = function () {
 			};
 
 			elm[this.WEBKIT_ANIMATION_END] = localFunc;
-			elm[this.ANIMATION_END] = elm[this.WEBKIT_ANIMATION_END];
+			elm[this.ANIMATION_END] = localFunc;
 
 			elm.addEventListener(this.WEBKIT_ANIMATION_END, localFunc, false);
 			elm.addEventListener(this.ANIMATION_END, localFunc, false);

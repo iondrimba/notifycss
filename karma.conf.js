@@ -21,7 +21,7 @@ module.exports = function(config) {
         ],
         included: false,
         browserify: {
-            debug: true,
+            debug: false,
             transform: ['stringify', 'babelify', istanbul({
                 defaultIgnore: true
             })],
