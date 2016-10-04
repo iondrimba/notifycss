@@ -34,11 +34,9 @@ function bumpPackageJson(type) {
 function bumpAppFiles(version) {
 	var options = {};
 	options.version = version;
-	options.indexFile = './public/index.html';
 
-	options.filePath = ['./public/js/app.js', './public/css/app.css'];
-	options.outputfolder = ['./public/js/', './public/css/'];
-
+	options.filePath = ['./src/notify-me.js', './dist/notify-me-transpiled.js'];
+	options.outputfolder = ['./dist/', './dist/'];
 	renameMe(options);
 }
 
