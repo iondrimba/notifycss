@@ -18,6 +18,12 @@ Provide simple way of adding/removing event listeners for CSS animation/transiti
  $ npm install notify-me --save-dev
 ```
 
+## Package contains two files:
+```js
+dist/notify-me.js (ES6)
+dist/notify-me-transpiled.js (ES5/transpiled)
+```
+
 ## Ways to import
 
 ```js
@@ -26,7 +32,6 @@ import NotifyMe from './notify-me';
 
 //CommonJS
 var NotifyMe = require('notify-me-transpiled.js');
-
 ```
 
 ## Usage ES6
