@@ -59,9 +59,19 @@ var Demo = function () {
 			};
 		}
 	}, {
+		key: 'showAlert',
+		value: function showAlert() {
+			var alert = document.getElementsByClassName('alert')[0];
+			alert.classList.add('alert-in');
+			var timer = setTimeout(function () {
+				alert.classList.remove('alert-in');
+				clearTimeout(timer);
+			}, 1000);
+		}
+	}, {
 		key: 'transitionComplete',
 		value: function transitionComplete() {
-			alert('transition complete');
+			this.showAlert();
 			this.transitionElm.classList.add('end');
 		}
 	}, {
@@ -79,7 +89,7 @@ var Demo = function () {
 	}, {
 		key: 'animationComplete',
 		value: function animationComplete() {
-			alert('animaton complete');
+			this.showAlert();
 			this.animationElm.classList.add('end');
 		}
 	}, {

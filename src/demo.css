@@ -1,6 +1,5 @@
 body {
     font-family: sans-serif;
-    padding: 20px;
     background-color: #252323;
     color: #fff;
     height: 4000px;
@@ -14,7 +13,22 @@ body {
 strong {
     font-size: 15pt;
 }
+ 
+.alert {
+    padding: 20px;
+    background-color: #4ab14a; 
+    text-transform: uppercase;
+    display: none;
+    position: fixed;
+    width: 99%;
+    z-index: 1;
+    top: 0;
+    box-sizing:border-box;
+}
 
+.alert-in {
+    display: block;
+}
 
 button {
     padding: 10px;
@@ -24,13 +38,11 @@ button {
     border: none;
     text-transform: uppercase;
     cursor: pointer;
-    -webkit-transition: all .3s;
     transition: all .3s;
 }
 
 button:hover {
     background-color: #074FBB;
-    -webkit-transition: all .3s;
     transition: all .3s;
 }
 
@@ -48,7 +60,6 @@ button:focus {
 
 .transition-demo {
     position: relative;
-    -webkit-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .animation-demo {
@@ -60,22 +71,9 @@ button:focus {
 }
 
 .animation-in {
-    -webkit-animation:animationShow .5s 1 forwards cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            animation:animationShow .5s 1 forwards cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation:animationShow .5s 1 forwards cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
-
-
-@-webkit-keyframes animationShow {
-    0% {
-        margin-left: 0;
-    }
-    100% {
-        margin-left: 30%;
-    }
-}
-
-
+ 
 
 @keyframes animationShow {
     0% {

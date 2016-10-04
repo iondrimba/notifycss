@@ -43,8 +43,16 @@ class Demo {
 			this.removeAnimation();
 		};
 	}
+	showAlert() {
+		let alert = document.getElementsByClassName('alert')[0];
+		alert.classList.add('alert-in');
+		let timer = setTimeout(() => {
+			alert.classList.remove('alert-in');
+			clearTimeout(timer);
+		}, 1000);
+	}
 	transitionComplete() {
-		alert('transition complete');
+		this.showAlert();
 		this.transitionElm.classList.add('end');
 	}
 	addTransition() {
@@ -56,7 +64,7 @@ class Demo {
 		this.transitionElm.classList.remove('transition-in');
 	}
 	animationComplete() {
-		alert('animaton complete');
+		this.showAlert();
 		this.animationElm.classList.add('end');
 	}
 	addAnimation() {

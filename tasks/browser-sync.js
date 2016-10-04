@@ -5,12 +5,12 @@ var browserSync = require('browser-sync')
 module.exports = function() {
 	browserSync.init({
 		server: {
-			baseDir: "./",
-			index: "/demo/index.html"
+			baseDir: "./demo",
+			index: "index.html"
 		}
 	});
 
-	gulp.watch("./demo/demo.css")
+	gulp.watch("./demo/*.css")
 		.on('change', browserSync.reload);
 	gulp.watch("./demo/demo.js")
 		.on('change', browserSync.reload);
