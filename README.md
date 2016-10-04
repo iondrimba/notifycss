@@ -18,7 +18,7 @@ Provide simple way of adding/removing event listeners for CSS animation/transiti
  $ npm install notify-me --save-dev
 ```
 
-## Usage
+## Usage ES6
 ```js
 import NotifyMe from './notify-me';
 
@@ -40,6 +40,37 @@ notifyMe.animationEnd(elm, (e) => {
 
 //add animation listener to a specific animation by name to the element
 notifyMe.animationEnd(elm, (e) => {
+    console.log('animation complete');
+}, 'animationName');
+
+//remove transition listener from the element
+notifyMe.removeTransitionListener(elm);
+
+//remove animation listener from the element
+notifyMe.removeAnimationListener(elm);
+
+```
+
+## Usage (Transpiled)
+```js
+//setup
+var notifyMe = new NotifyMe();
+
+//DOM element
+var elm = document.getElementsByClassName('any-selector')[0];
+
+//add transition listener to an DOM element
+notifyMe.transitionEnd(elm, function() {
+	console.log('transition complete');
+});
+
+//add animation listener to any animation on the element
+notifyMe.animationEnd(elm, function() {
+    console.log('animation complete');
+});
+
+//add animation listener to a specific animation by name to the element
+notifyMe.animationEnd(elm, function() {
     console.log('animation complete');
 }, 'animationName');
 
