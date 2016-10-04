@@ -1,6 +1,6 @@
 {
   "name": "notifycss",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Notification for CSS animation/transition events",
   "main": "gulpfile.js",
   "keywords": [
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-  "url": "git+https://github.com/iondrimba/notify-me.git"
+    "url": "git+https://github.com/iondrimba/notifycss.git"
   },
   "scripts": {
     "test": "karma start"
