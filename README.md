@@ -18,6 +18,20 @@ Provide simple way of adding/removing event listeners for CSS animation/transiti
  $ npm install notify-me --save-dev
 ```
 
+## Gulp Tasks
+```js
+gulp default (runs on local server)
+
+gulp deploy (deploys ES6 version)
+
+gulp transpiled (deploys transpiled version)
+```
+
+#### Testing:
+```
+npm test
+```
+
 ## Package contains two files:
 ```js
 dist/notify-me.js (ES6)
@@ -26,13 +40,17 @@ dist/notify-me-transpiled.js (ES5/transpiled)
 
 ## Ways to import
 
-```js
+```html
 //ES6
 import NotifyMe from './notify-me';
 
 //CommonJS
 var NotifyMe = require('notify-me-transpiled.js');
+
+//inline script
+<script src="notify-me-transpiled.js"></script>
 ```
+
 
 ## Usage ES6
 ```js
@@ -54,7 +72,7 @@ notifyMe.animationEnd(elm, (e) => {
     console.log('animation complete');
 });
 
-//add animation listener to a specific animation by name to the element
+//add animation listener to a specific animation by name
 notifyMe.animationEnd(elm, (e) => {
     console.log('animation complete');
 }, 'animationName');
@@ -85,7 +103,7 @@ notifyMe.animationEnd(elm, function() {
     console.log('animation complete');
 });
 
-//add animation listener to a specific animation by name to the element
+//add animation listener to a specific animation by name
 notifyMe.animationEnd(elm, function() {
     console.log('animation complete');
 }, 'animationName');
@@ -98,9 +116,5 @@ notifyMe.removeAnimationListener(elm);
 
 ```
 
-#### Testing:
-```
-npm test
-```
 
 [Live demo]:<http://iondrimba.github.io/notify-me/>
