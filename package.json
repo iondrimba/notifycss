@@ -1,6 +1,6 @@
 {
   "name": "notifycss",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Notification for CSS animation/transition events",
   "main": "gulpfile.js",
   "keywords": [

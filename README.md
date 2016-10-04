@@ -77,10 +77,10 @@ h1 {
 
 ## Usage ES6
 ```js
-import notifyCss from './notifycss';
+import NotifyCss from './notifycss';
 
 //setup
-let notifyCss = new notifyCss();
+let notifyCss = new NotifyCss();
 
 //DOM element
 let elm = document.getElementsByClassName('any-selector')[0];
@@ -111,7 +111,7 @@ notifyCss.removeAnimationListener(elm);
 ## Usage (Transpiled)
 ```js 
 //setup
-var notifyCss = new notifyCss();
+var notifyCss = new NotifyCss();
 
 //DOM element
 var elm = document.getElementsByClassName('any-selector')[0];
