@@ -53,6 +53,27 @@ var NotifyMe = require('notify-me-transpiled.js');
 <script src="notify-me-transpiled.js"></script>
 ```
 
+## CSS Demo
+```
+button {
+	opacity:0;
+	transition: opacity .3s;
+}
+
+h1 {
+	animation:animationShow .5s 1 forwards cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes animationShow {
+	0% {
+	    opacity: 0;
+	}
+	100% {
+	    opacity: 1;
+	}
+}
+
+```
 
 ## Usage ES6
 ```js
