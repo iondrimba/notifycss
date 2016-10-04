@@ -22,7 +22,7 @@ Provide simple way of adding/removing event listeners for CSS animation/transiti
 
 ```js
 //ES6
- import NotifyMe from './notify-me';
+import NotifyMe from './notify-me';
 
 //CommonJS
 var NotifyMe = require('notify-me-transpiled.js');
