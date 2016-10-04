@@ -3,9 +3,9 @@
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _notifyMe = require('./notify-me');
+var _notifycss = require('./notifycss');
 
-var _notifyMe2 = _interopRequireDefault(_notifyMe);
+var _notifycss2 = _interopRequireDefault(_notifycss);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21,7 +21,7 @@ var Demo = function () {
 		value: function setup() {
 			var _this = this;
 
-			this.notifyMe = new _notifyMe2.default();
+			this.notifyCss = new _notifycss2.default();
 
 			//CSS TRANSITION
 
@@ -29,7 +29,7 @@ var Demo = function () {
 			this.btnTransitionIn = document.getElementsByClassName('btn-transition')[0];
 			this.btnTransitionOut = document.getElementsByClassName('btn-transition-remove')[0];
 
-			this.notifyMe.transitionEnd(this.transitionElm, function () {
+			this.notifyCss.transitionEnd(this.transitionElm, function () {
 				_this.transitionComplete();
 			});
 
@@ -47,7 +47,7 @@ var Demo = function () {
 			this.btnAnimationIn = document.getElementsByClassName('btn-animation')[0];
 			this.btnAnimationOut = document.getElementsByClassName('btn-animation-remove')[0];
 
-			this.notifyMe.animationEnd(this.animationElm, function () {
+			this.notifyCss.animationEnd(this.animationElm, function () {
 				_this.animationComplete();
 			}, 'animationShow');
 
@@ -69,22 +69,16 @@ var Demo = function () {
 			}, 1000);
 		}
 	}, {
-		key: 'transitionComplete',
-		value: function transitionComplete() {
-			this.showAlert();
-			this.transitionElm.classList.add('end');
-		}
-	}, {
 		key: 'addTransition',
 		value: function addTransition() {
 			this.transitionElm.classList.remove('end');
 			this.transitionElm.classList.add('transition-in');
 		}
 	}, {
-		key: 'removeTransition',
-		value: function removeTransition() {
-			this.transitionElm.classList.remove('end');
-			this.transitionElm.classList.remove('transition-in');
+		key: 'addAnimation',
+		value: function addAnimation() {
+			this.animationElm.classList.remove('end');
+			this.animationElm.classList.add('animation-in');
 		}
 	}, {
 		key: 'animationComplete',
@@ -93,10 +87,16 @@ var Demo = function () {
 			this.animationElm.classList.add('end');
 		}
 	}, {
-		key: 'addAnimation',
-		value: function addAnimation() {
-			this.animationElm.classList.remove('end');
-			this.animationElm.classList.add('animation-in');
+		key: 'transitionComplete',
+		value: function transitionComplete() {
+			this.showAlert();
+			this.transitionElm.classList.add('end');
+		}
+	}, {
+		key: 'removeTransition',
+		value: function removeTransition() {
+			this.transitionElm.classList.remove('end');
+			this.transitionElm.classList.remove('transition-in');
 		}
 	}, {
 		key: 'removeAnimation',
@@ -107,12 +107,12 @@ var Demo = function () {
 	}, {
 		key: 'removeAnimationListener',
 		value: function removeAnimationListener() {
-			this.notifyMe.removeAnimationListener(this.animationElm);
+			this.notifyCss.removeAnimationListener(this.animationElm);
 		}
 	}, {
 		key: 'removeTransitionListener',
 		value: function removeTransitionListener() {
-			this.notifyMe.removeTransitionListener(this.transitionElm);
+			this.notifyCss.removeTransitionListener(this.transitionElm);
 		}
 	}]);
 
@@ -121,7 +121,7 @@ var Demo = function () {
 
 window.demo = new Demo();
 
-},{"./notify-me":2}],2:[function(require,module,exports){
+},{"./notifycss":2}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -132,20 +132,22 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var NotifyMe = function () {
-	function NotifyMe() {
-		_classCallCheck(this, NotifyMe);
+var NotifyCss = function () {
+	function NotifyCss() {
+		_classCallCheck(this, NotifyCss);
 
 		this.TRANSITION_END = 'transitionend';
 		this.ANIMATION_END = 'animationend';
 		this.WEBKIT_ANIMATION_END = 'webkitAnimationEnd';
 	}
 
-	_createClass(NotifyMe, [{
+	_createClass(NotifyCss, [{
 		key: '_privateCall',
-		value: function _privateCall(e, func, name) {
-			if (name.length) {
-				if (e.animationName === name) {
+		value: function _privateCall(e, func) {
+			var animationName = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
+
+			if (animationName.length) {
+				if (e.animationName === animationName) {
 					func(e);
 				}
 			} else {
@@ -169,10 +171,10 @@ var NotifyMe = function () {
 		value: function animationEnd(elm, func) {
 			var _this = this;
 
-			var name = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
+			var animationName = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
 
 			var localFunc = function localFunc(e) {
-				_this._privateCall(e, func, name);
+				_this._privateCall(e, func, animationName);
 			};
 
 			elm[this.WEBKIT_ANIMATION_END] = localFunc;
@@ -194,9 +196,9 @@ var NotifyMe = function () {
 		}
 	}]);
 
-	return NotifyMe;
+	return NotifyCss;
 }();
 
-exports.default = NotifyMe;
+exports.default = NotifyCss;
 
 },{}]},{},[1]);

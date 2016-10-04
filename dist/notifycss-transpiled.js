@@ -9,16 +9,16 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var NotifyMe = function () {
-	function NotifyMe() {
-		_classCallCheck(this, NotifyMe);
+var NotifyCss = function () {
+	function NotifyCss() {
+		_classCallCheck(this, NotifyCss);
 
 		this.TRANSITION_END = 'transitionend';
 		this.ANIMATION_END = 'animationend';
 		this.WEBKIT_ANIMATION_END = 'webkitAnimationEnd';
 	}
 
-	_createClass(NotifyMe, [{
+	_createClass(NotifyCss, [{
 		key: '_privateCall',
 		value: function _privateCall(e, func) {
 			var animationName = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
@@ -73,9 +73,9 @@ var NotifyMe = function () {
 		}
 	}]);
 
-	return NotifyMe;
+	return NotifyCss;
 }();
 
-exports.default = NotifyMe;
+exports.default = NotifyCss;
 
 },{}]},{},[1]);

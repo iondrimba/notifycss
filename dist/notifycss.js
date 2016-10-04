@@ -1,6 +1,6 @@
 'use strict';
 
-class NotifyMe {
+class NotifyCss {
 	constructor() {
 		this.TRANSITION_END = 'transitionend';
 		this.ANIMATION_END = 'animationend';
@@ -29,7 +29,7 @@ class NotifyMe {
 		};
 
 		elm[this.WEBKIT_ANIMATION_END] = localFunc;
-		elm[this.ANIMATION_END] = elm[this.WEBKIT_ANIMATION_END];
+		elm[this.ANIMATION_END] = localFunc;
 
 		elm.addEventListener(this.WEBKIT_ANIMATION_END, localFunc, false);
 		elm.addEventListener(this.ANIMATION_END, localFunc, false);
@@ -43,4 +43,4 @@ class NotifyMe {
 	}
 }
 
-export default NotifyMe;
+export default NotifyCss;

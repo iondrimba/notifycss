@@ -1,5 +1,5 @@
 {
-  "name": "notifyme",
+  "name": "notifycss",
   "version": "0.0.1",
   "description": "Notification for CSS animation/transition events",
   "main": "gulpfile.js",

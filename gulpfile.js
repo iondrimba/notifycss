@@ -35,7 +35,7 @@ function bumpAppFiles(version) {
 	var options = {};
 	options.version = version;
 
-	options.filePath = ['./src/notify-me.js', './dist/notify-me-transpiled.js'];
+	options.filePath = ['./src/notifycss.js', './dist/notifycss-transpiled.js'];
 	options.outputfolder = ['./dist/', './dist/'];
 	renameMe(options);
 }

@@ -1,12 +1,13 @@
 'use strict';
-import NotifyMe from './notify-me';
+
+import NotifyCss from './notifycss';
 
 class Demo {
 	constructor() {
 
 	}
 	setup() {
-		this.notifyMe = new NotifyMe();
+		this.notifyCss = new NotifyCss();
 
 		//CSS TRANSITION
 
@@ -14,7 +15,7 @@ class Demo {
 		this.btnTransitionIn = document.getElementsByClassName('btn-transition')[0];
 		this.btnTransitionOut = document.getElementsByClassName('btn-transition-remove')[0];
 
-		this.notifyMe.transitionEnd(this.transitionElm, () => {
+		this.notifyCss.transitionEnd(this.transitionElm, () => {
 			this.transitionComplete();
 		});
 
@@ -32,7 +33,7 @@ class Demo {
 		this.btnAnimationIn = document.getElementsByClassName('btn-animation')[0];
 		this.btnAnimationOut = document.getElementsByClassName('btn-animation-remove')[0];
 
-		this.notifyMe.animationEnd(this.animationElm, () => {
+		this.notifyCss.animationEnd(this.animationElm, () => {
 			this.animationComplete();
 		}, 'animationShow');
 
@@ -76,10 +77,10 @@ class Demo {
 		this.animationElm.classList.remove('animation-in');
 	}
 	removeAnimationListener() {
-		this.notifyMe.removeAnimationListener(this.animationElm);
+		this.notifyCss.removeAnimationListener(this.animationElm);
 	}
 	removeTransitionListener() {
-		this.notifyMe.removeTransitionListener(this.transitionElm);
+		this.notifyCss.removeTransitionListener(this.transitionElm);
 	}
 
 }
