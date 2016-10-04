@@ -27,7 +27,7 @@ gulp deploy (deploys ES6 version)
 gulp transpiled (deploys transpiled version)
 ```
 
-#### Testing:
+## Testing:
 ```
 npm test
 ```
