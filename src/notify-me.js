@@ -6,9 +6,9 @@ class NotifyMe {
 		this.ANIMATION_END = 'animationend';
 		this.WEBKIT_ANIMATION_END = 'webkitAnimationEnd';
 	}
-	_privateCall(e, func, name) {
-		if (name.length) {
-			if (e.animationName === name) {
+	_privateCall(e, func, animationName = '') {
+		if (animationName.length) {
+			if (e.animationName === animationName) {
 				func(e);
 			}
 		} else {
@@ -23,13 +23,13 @@ class NotifyMe {
 		elm[this.TRANSITION_END] = func;
 		elm.addEventListener(this.TRANSITION_END, func, false);
 	}
-	animationEnd(elm, func, name = '') {
+	animationEnd(elm, func, animationName = '') {
 		let localFunc = (e) => {
-			this._privateCall(e, func, name);
+			this._privateCall(e, func, animationName);
 		};
 
 		elm[this.WEBKIT_ANIMATION_END] = localFunc;
-		elm[this.ANIMATION_END] = localFunc;
+		elm[this.ANIMATION_END] = elm[this.WEBKIT_ANIMATION_END];
 
 		elm.addEventListener(this.WEBKIT_ANIMATION_END, localFunc, false);
 		elm.addEventListener(this.ANIMATION_END, localFunc, false);

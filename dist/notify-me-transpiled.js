@@ -20,9 +20,11 @@ var NotifyMe = function () {
 
 	_createClass(NotifyMe, [{
 		key: '_privateCall',
-		value: function _privateCall(e, func, name) {
-			if (name.length) {
-				if (e.animationName === name) {
+		value: function _privateCall(e, func) {
+			var animationName = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
+
+			if (animationName.length) {
+				if (e.animationName === animationName) {
 					func(e);
 				}
 			} else {
@@ -46,14 +48,14 @@ var NotifyMe = function () {
 		value: function animationEnd(elm, func) {
 			var _this = this;
 
-			var name = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
+			var animationName = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
 
 			var localFunc = function localFunc(e) {
-				_this._privateCall(e, func, name);
+				_this._privateCall(e, func, animationName);
 			};
 
 			elm[this.WEBKIT_ANIMATION_END] = localFunc;
-			elm[this.ANIMATION_END] = localFunc;
+			elm[this.ANIMATION_END] = elm[this.WEBKIT_ANIMATION_END];
 
 			elm.addEventListener(this.WEBKIT_ANIMATION_END, localFunc, false);
 			elm.addEventListener(this.ANIMATION_END, localFunc, false);
