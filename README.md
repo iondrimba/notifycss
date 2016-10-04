@@ -6,6 +6,8 @@ Notify CSS animation/transition events
 
 #### GOAL:
 Provide simple way of adding/removing event listeners for CSS animation/transition.
+### [Live demo]
+#
 
 #### Build Requires:
 
