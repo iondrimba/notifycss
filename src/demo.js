@@ -32,7 +32,7 @@ class Demo {
 		this.btnAnimationIn = document.getElementsByClassName('btn-animation')[0];
 		this.btnAnimationOut = document.getElementsByClassName('btn-animation-remove')[0];
 
-		this.notifyMe.animationEnd(this.animationElm, (e) => {
+		this.notifyMe.animationEnd(this.animationElm, () => {
 			this.animationComplete();
 		}, 'animationShow');
 
@@ -44,6 +44,7 @@ class Demo {
 		};
 	}
 	transitionComplete() {
+		alert('transition complete');
 		this.transitionElm.classList.add('end');
 	}
 	addTransition() {
@@ -55,6 +56,7 @@ class Demo {
 		this.transitionElm.classList.remove('transition-in');
 	}
 	animationComplete() {
+		alert('animaton complete');
 		this.animationElm.classList.add('end');
 	}
 	addAnimation() {

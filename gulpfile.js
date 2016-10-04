@@ -13,13 +13,13 @@ var minor = semver.inc(pckg.version, 'minor');
 var major = semver.inc(pckg.version, 'major');
 
 // bump versions on package
-gulp.task('minor', function () {
+gulp.task('minor', function() {
 	return bumpPackageJson(minor);
 });
-gulp.task('patch', function () {
+gulp.task('patch', function() {
 	return bumpPackageJson(patch);
 });
-gulp.task('major', function () {
+gulp.task('major', function() {
 	return bumpPackageJson(major);
 });
 
@@ -42,11 +42,15 @@ function bumpAppFiles(version) {
 	renameMe(options);
 }
 
-//copies index.html file to public folder
-gulp.task('copy', require('./tasks/copy.js'));
+//copy css demo
+gulp.task('copy-css', require('./tasks/copy.js'));
 
-// using vinyl-source-stream:
+//copy notify-me to dist folder
+gulp.task('copy-notify', require('./tasks/copy-notify.js'));
+
 gulp.task('browserify', require('./tasks/browserify.js'));
+gulp
+gulp.task('browserify-src', require('./tasks/browserify-src.js'));
 
 //eslint task
 gulp.task('eslint', require('./tasks/eslint.js'));
@@ -54,7 +58,6 @@ gulp.task('eslint', require('./tasks/eslint.js'));
 //uglify task
 gulp.task('uglify', require('./tasks/uglify.js'));
 
-//watch js/scss/teplate files
 gulp.task('watch', require('./tasks/watch.js'));
 
 //post css
@@ -81,10 +84,10 @@ gulp.task('bump-major', gulpsync.sync(['major']), function renameMajor() {
 
 
 // Default Task
-gulp.task('default', gulpsync.sync(['copy','eslint', 'browserify', 'browser-sync', 'watch']));
+gulp.task('default', gulpsync.sync(['copy-css', 'eslint', 'browserify', 'browser-sync', 'watch']));
 
 //publish Task
-//gulp.task('deploy', gulpsync.sync(['copy','eslint', 'browserify']));
+gulp.task('deploy', gulpsync.sync(['eslint', 'copy-notify']));
 
-//optimization task isolated because of the asynchronous problems gulp has
-//gulp.task('optimize', gulpsync.sync(['copy', 'uglify']));
+//publish Task
+gulp.task('transpiled', gulpsync.sync(['eslint', 'copy-notify', 'browserify-src']));

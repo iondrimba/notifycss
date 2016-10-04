@@ -5,7 +5,6 @@ var threshold = require('karma-threshold-reporter');
 
 module.exports = function(config) {
     config.set({
-        browsers: ['Chrome'],
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: '',
 

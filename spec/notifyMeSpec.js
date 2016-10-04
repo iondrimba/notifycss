@@ -1,5 +1,5 @@
 beforeEach(function() {
-	fixture.load('/index.html');
+	fixture.load('fixture.html');
 	demo.setup();
 });
 
