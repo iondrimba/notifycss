@@ -44,10 +44,10 @@ dist/notifycss-transpiled.js (ES5/transpiled)
 
 ```html
 //ES6
-import NotifyMe from './notifycss';
+import notifyCss from './notifycss';
 
 //CommonJS
-var NotifyMe = require('notifycss-transpiled.js');
+var notifyCss = require('notifycss-transpiled.js');
 
 //inline script
 <script src="notifycss-transpiled.js"></script>
@@ -77,65 +77,65 @@ h1 {
 
 ## Usage ES6
 ```js
-import NotifyMe from './notifycss';
+import notifyCss from './notifycss';
 
 //setup
-let notifyMe = new NotifyMe();
+let notifyCss = new notifyCss();
 
 //DOM element
 let elm = document.getElementsByClassName('any-selector')[0];
 
 //add transition listener to an DOM element
-notifyMe.transitionEnd(elm, () => {
+notifyCss.transitionEnd(elm, () => {
 	console.log('transition complete');
 });
 
 //add animation listener to any animation on the element
-notifyMe.animationEnd(elm, (e) => {
+notifyCss.animationEnd(elm, (e) => {
     console.log('animation complete');
 });
 
 //add animation listener to a specific animation by name
-notifyMe.animationEnd(elm, (e) => {
+notifyCss.animationEnd(elm, (e) => {
     console.log('animation complete');
 }, 'animationName');
 
 //remove transition listener from the element
-notifyMe.removeTransitionListener(elm);
+notifyCss.removeTransitionListener(elm);
 
 //remove animation listener from the element
-notifyMe.removeAnimationListener(elm);
+notifyCss.removeAnimationListener(elm);
 
 ```
 
 ## Usage (Transpiled)
-```js
+```js 
 //setup
-var notifyMe = new NotifyMe();
+var notifyCss = new notifyCss();
 
 //DOM element
 var elm = document.getElementsByClassName('any-selector')[0];
 
 //add transition listener to an DOM element
-notifyMe.transitionEnd(elm, function() {
+notifyCss.transitionEnd(elm, function() {
 	console.log('transition complete');
 });
 
 //add animation listener to any animation on the element
-notifyMe.animationEnd(elm, function() {
+notifyCss.animationEnd(elm, function() {
     console.log('animation complete');
 });
 
 //add animation listener to a specific animation by name
-notifyMe.animationEnd(elm, function() {
+notifyCss.animationEnd(elm, function() {
     console.log('animation complete');
 }, 'animationName');
 
 //remove transition listener from the element
-notifyMe.removeTransitionListener(elm);
+notifyCss.removeTransitionListener(elm);
 
 //remove animation listener from the element
-notifyMe.removeAnimationListener(elm);
+notifyCss.removeAnimationListener(elm);
 
 ```
 
