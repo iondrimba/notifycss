@@ -1,8 +1,8 @@
-# NotifyMe
+# NotifyCss
 
 Notify CSS animation/transition events
 
-[![Travis build status](https://travis-ci.org/iondrimba/notify-me.svg?branch=master)](https://travis-ci.org/iondrimba/notify-me) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva/branch/master?svg=true)](https://ci.appveyor.com/project/iondrimba/notify-me/branch/master) [![Coverage Status](https://coveralls.io/repos/github/iondrimba/notify-me/badge.svg?branch=master)](https://coveralls.io/github/iondrimba/notify-me?branch=master)
+[![Travis build status](https://travis-ci.org/iondrimba/notifycss.svg?branch=master)](https://travis-ci.org/iondrimba/notifycss) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva/branch/master?svg=true)](https://ci.appveyor.com/project/iondrimba/notifycss/branch/master) [![Coverage Status](https://coveralls.io/repos/github/iondrimba/notifycss/badge.svg?branch=master)](https://coveralls.io/github/iondrimba/notifycss?branch=master)
 
 #### GOAL:
 Provide a simple way of adding/removing event listeners for CSS animation/transition.
@@ -36,21 +36,21 @@ npm test
 
 ## Package contains two files:
 ```js
-dist/notify-me.js (ES6)
-dist/notify-me-transpiled.js (ES5/transpiled)
+dist/notifycss.js (ES6)
+dist/notifycss-transpiled.js (ES5/transpiled)
 ```
 
 ## Ways to import
 
 ```html
 //ES6
-import NotifyMe from './notify-me';
+import NotifyMe from './notifycss';
 
 //CommonJS
-var NotifyMe = require('notify-me-transpiled.js');
+var NotifyMe = require('notifycss-transpiled.js');
 
 //inline script
-<script src="notify-me-transpiled.js"></script>
+<script src="notifycss-transpiled.js"></script>
 ```
 
 ## CSS Demo
@@ -77,7 +77,7 @@ h1 {
 
 ## Usage ES6
 ```js
-import NotifyMe from './notify-me';
+import NotifyMe from './notifycss';
 
 //setup
 let notifyMe = new NotifyMe();
@@ -140,4 +140,4 @@ notifyMe.removeAnimationListener(elm);
 ```
 
 
-[Live demo]:<http://iondrimba.github.io/notify-me/>
+[Live demo]:<http://iondrimba.github.io/notifycss/>
