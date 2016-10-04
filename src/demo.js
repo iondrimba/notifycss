@@ -51,25 +51,25 @@ class Demo {
 			clearTimeout(timer);
 		}, 1000);
 	}
-	transitionComplete() {
-		this.showAlert();
-		this.transitionElm.classList.add('end');
-	}
 	addTransition() {
 		this.transitionElm.classList.remove('end');
 		this.transitionElm.classList.add('transition-in');
 	}
-	removeTransition() {
-		this.transitionElm.classList.remove('end');
-		this.transitionElm.classList.remove('transition-in');
+	addAnimation() {
+		this.animationElm.classList.remove('end');
+		this.animationElm.classList.add('animation-in');
 	}
 	animationComplete() {
 		this.showAlert();
 		this.animationElm.classList.add('end');
 	}
-	addAnimation() {
-		this.animationElm.classList.remove('end');
-		this.animationElm.classList.add('animation-in');
+	transitionComplete() {
+		this.showAlert();
+		this.transitionElm.classList.add('end');
+	}
+	removeTransition() {
+		this.transitionElm.classList.remove('end');
+		this.transitionElm.classList.remove('transition-in');
 	}
 	removeAnimation() {
 		this.animationElm.classList.remove('end');
