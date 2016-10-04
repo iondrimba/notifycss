@@ -17,7 +17,7 @@ Provide a simple way of adding/removing event listeners for CSS animation/transi
 ## Installation
 
 ```sh
- $ npm install notify-me --save-dev
+ $ npm install notifyme --save-dev
 ```
 
 ## Gulp Tasks
