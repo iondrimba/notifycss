@@ -1,4 +1,4 @@
-# Notify Me
+# NotifyMe
 
 Notify CSS animation/transition events
 
